@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>关于Git常用命令总结 | 个人博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://heluchao.github.io//favicon.ico?v=1564283240584">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://heluchao.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://heluchao.github.io/">
+        <img src="https://heluchao.github.io//images/avatar.png?v=1564283240584" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://heluchao.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">关于Git常用命令总结</h2>
+            <div class="post-date">2019-07-24</div>
+            
+              <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/vg/wallhaven-vg5193.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>在进入正文之前给大家安利一个常用的Git图形化工具，支持Windows，Mac等系统，毕竟使用Sourcetree一时爽，一直使用一直爽~结合下面的Git常用命令可以达到事半功倍的效果！！！<br>
+<a href="https://www.sourcetreeapp.com/">Sourcetree</a></p>
+<!-- more -->
+<blockquote>
+<p>一、新建代码库</p>
+</blockquote>
+<h1 id="在当前目录新建一个git代码库">在当前目录新建一个Git代码库</h1>
+<pre><code>$ git init
+</code></pre>
+<h1 id="新建一个目录将其初始化为git代码库">新建一个目录，将其初始化为Git代码库</h1>
+<pre><code>$ git init [project-name]
+</code></pre>
+<h1 id="下载一个项目和它的整个代码历史">下载一个项目和它的整个代码历史</h1>
+<pre><code>$ git clone [url]
+</code></pre>
+<blockquote>
+<p>二、配置</p>
+</blockquote>
+<pre><code>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+</code></pre>
+<h1 id="显示当前的git配置">显示当前的Git配置</h1>
+<pre><code>$ git config --list
+</code></pre>
+<h1 id="编辑git配置文件">编辑Git配置文件</h1>
+<pre><code>$ git config -e [--global]
+</code></pre>
+<h1 id="设置提交代码时的用户信息">设置提交代码时的用户信息</h1>
+<pre><code>$ git config [--global] user.name &quot;[name]&quot;
+$ git config [--global] user.email &quot;[email address]&quot;
+</code></pre>
+<blockquote>
+<p>三、增加/删除文件</p>
+</blockquote>
+<h1 id="添加指定文件到暂存区">添加指定文件到暂存区</h1>
+<pre><code>$ git add [file1] [file2] ...
+</code></pre>
+<h1 id="添加指定目录到暂存区包括子目录">添加指定目录到暂存区，包括子目录</h1>
+<pre><code>$ git add [dir]
+</code></pre>
+<h1 id="添加当前目录的所有文件到暂存区">添加当前目录的所有文件到暂存区</h1>
+<pre><code>$ git add .
+</code></pre>
+<h1 id="添加每个变化前都会要求确认对于同一个文件的多处变化可以实现分次提交">添加每个变化前，都会要求确认对于同一个文件的多处变化，可以实现分次提交</h1>
+<pre><code>$ git add -p
+</code></pre>
+<h1 id="删除工作区文件并且将这次删除放入暂存区">删除工作区文件，并且将这次删除放入暂存区</h1>
+<pre><code>$ git rm [file1] [file2] ...
+</code></pre>
+<h1 id="停止追踪指定文件但该文件会保留在工作区">停止追踪指定文件，但该文件会保留在工作区</h1>
+<pre><code>$ git rm --cached [file]
+</code></pre>
+<h1 id="改名文件并且将这个改名放入暂存区">改名文件，并且将这个改名放入暂存区</h1>
+<pre><code>$ git mv [file-original] [file-renamed]
+</code></pre>
+<blockquote>
+<p>四、代码提交</p>
+</blockquote>
+<h1 id="提交暂存区到仓库区">提交暂存区到仓库区</h1>
+<pre><code>$ git commit -m [message]
+</code></pre>
+<h1 id="提交暂存区的指定文件到仓库区">提交暂存区的指定文件到仓库区</h1>
+<pre><code>$ git commit [file1] [file2] ... -m [message]
+</code></pre>
+<h1 id="提交工作区自上次commit之后的变化直接到仓库区">提交工作区自上次commit之后的变化，直接到仓库区</h1>
+<pre><code>$ git commit -a
+</code></pre>
+<h1 id="提交时显示所有diff信息">提交时显示所有diff信息</h1>
+<pre><code>$ git commit -v
+</code></pre>
+<h1 id="使用一次新的commit替代上一次提交">使用一次新的commit，替代上一次提交</h1>
+<h1 id="如果代码没有任何新变化则用来改写上一次commit的提交信息">如果代码没有任何新变化，则用来改写上一次commit的提交信息</h1>
+<pre><code>$ git commit --amend -m [message]
+</code></pre>
+<h1 id="重做上一次commit并包括指定文件的新变化">重做上一次commit，并包括指定文件的新变化</h1>
+<pre><code>$ git commit --amend [file1] [file2] ...
+</code></pre>
+<blockquote>
+<p>五、分支</p>
+</blockquote>
+<h1 id="列出所有本地分支">列出所有本地分支</h1>
+<pre><code>$ git branch
+</code></pre>
+<h1 id="列出所有远程分支">列出所有远程分支</h1>
+<pre><code>$ git branch -r
+</code></pre>
+<h1 id="列出所有本地分支和远程分支">列出所有本地分支和远程分支</h1>
+<pre><code>$ git branch -a
+</code></pre>
+<h1 id="新建一个分支但依然停留在当前分支">新建一个分支，但依然停留在当前分支</h1>
+<pre><code>$ git branch [branch-name]
+</code></pre>
+<h1 id="新建一个分支并切换到该分支">新建一个分支，并切换到该分支</h1>
+<pre><code>$ git checkout -b [branch]
+</code></pre>
+<h1 id="新建一个分支指向指定commit">新建一个分支，指向指定commit</h1>
+<pre><code>$ git branch [branch] [commit]
+</code></pre>
+<h1 id="新建一个分支与指定的远程分支建立追踪关系">新建一个分支，与指定的远程分支建立追踪关系</h1>
+<pre><code>$ git branch --track [branch] [remote-branch]
+</code></pre>
+<h1 id="切换到指定分支并更新工作区">切换到指定分支，并更新工作区</h1>
+<pre><code>$ git checkout [branch-name]
+</code></pre>
+<h1 id="切换到上一个分支">切换到上一个分支</h1>
+<pre><code>$ git checkout -
+</code></pre>
+<h1 id="建立追踪关系在现有分支与指定的远程分支之间">建立追踪关系，在现有分支与指定的远程分支之间</h1>
+<pre><code>$ git branch --set-upstream [branch] [remote-branch]
+</code></pre>
+<h1 id="合并指定分支到当前分支">合并指定分支到当前分支</h1>
+<pre><code>$ git merge [branch]
+</code></pre>
+<h1 id="选择一个commit合并进当前分支">选择一个commit，合并进当前分支</h1>
+<pre><code>$ git cherry-pick [commit]
+</code></pre>
+<h1 id="删除分支">删除分支</h1>
+<pre><code>$ git branch -d [branch-name]
+</code></pre>
+<h1 id="删除远程分支">删除远程分支</h1>
+<pre><code>$ git push origin --delete [branch-name]
+$ git branch -dr [remote/branch]
+</code></pre>
+<blockquote>
+<p>六、标签</p>
+</blockquote>
+<h1 id="列出所有tag">列出所有tag</h1>
+<pre><code>$ git tag
+</code></pre>
+<h1 id="新建一个tag在当前commit">新建一个tag在当前commit</h1>
+<pre><code>$ git tag [tag]
+</code></pre>
+<h1 id="新建一个tag在指定commit">新建一个tag在指定commit</h1>
+<pre><code>$ git tag [tag] [commit]
+</code></pre>
+<h1 id="删除本地tag">删除本地tag</h1>
+<pre><code>$ git tag -d [tag]
+</code></pre>
+<h1 id="删除远程tag">删除远程tag</h1>
+<pre><code>$ git push origin :refs/tags/[tagName]
+</code></pre>
+<h1 id="查看tag信息">查看tag信息</h1>
+<pre><code>$ git show [tag]
+</code></pre>
+<h1 id="提交指定tag">提交指定tag</h1>
+<pre><code>$ git push [remote] [tag]
+</code></pre>
+<h1 id="提交所有tag">提交所有tag</h1>
+<pre><code>$ git push [remote] --tags
+</code></pre>
+<h1 id="新建一个分支指向某个tag">新建一个分支，指向某个tag</h1>
+<pre><code>$ git checkout -b [branch] [tag]
+</code></pre>
+<blockquote>
+<p>七、查看信息</p>
+</blockquote>
+<h1 id="显示有变更的文件">显示有变更的文件</h1>
+<pre><code>$ git status
+</code></pre>
+<h1 id="显示当前分支的版本历史">显示当前分支的版本历史</h1>
+<pre><code>$ git log
+</code></pre>
+<h1 id="显示commit历史以及每次commit发生变更的文件">显示commit历史，以及每次commit发生变更的文件</h1>
+<pre><code>$ git log --stat
+</code></pre>
+<h1 id="搜索提交历史根据关键词">搜索提交历史，根据关键词</h1>
+<pre><code>$ git log -S [keyword]
+</code></pre>
+<h1 id="显示某个commit之后的所有变动每个commit占据一行">显示某个commit之后的所有变动，每个commit占据一行</h1>
+<pre><code>$ git log [tag] HEAD --pretty=format:%s
+</code></pre>
+<h1 id="显示某个commit之后的所有变动其提交说明必须符合搜索条件">显示某个commit之后的所有变动，其&quot;提交说明&quot;必须符合搜索条件</h1>
+<pre><code>$ git log [tag] HEAD --grep feature
+</code></pre>
+<h1 id="显示某个文件的版本历史包括文件改名">显示某个文件的版本历史，包括文件改名</h1>
+<pre><code>$ git log --follow [file]
+$ git whatchanged [file]
+</code></pre>
+<h1 id="显示指定文件相关的每一次diff">显示指定文件相关的每一次diff</h1>
+<pre><code>$ git log -p [file]
+</code></pre>
+<h1 id="显示过去5次提交">显示过去5次提交</h1>
+<pre><code>$ git log -5 --pretty --oneline
+</code></pre>
+<h1 id="显示所有提交过的用户按提交次数排序">显示所有提交过的用户，按提交次数排序</h1>
+<pre><code>$ git shortlog -sn
+</code></pre>
+<h1 id="显示指定文件是什么人在什么时间修改过">显示指定文件是什么人在什么时间修改过</h1>
+<pre><code>$ git blame [file]
+</code></pre>
+<h1 id="显示暂存区和工作区的代码差异">显示暂存区和工作区的代码差异</h1>
+<pre><code>$ git diff
+</code></pre>
+<h1 id="显示暂存区和上一个commit的差异">显示暂存区和上一个commit的差异</h1>
+<pre><code>$ git diff --cached [file]
+</code></pre>
+<h1 id="显示工作区与当前分支最新commit之间的差异">显示工作区与当前分支最新commit之间的差异</h1>
+<pre><code>$ git diff HEAD
+</code></pre>
+<h1 id="显示两次提交之间的差异">显示两次提交之间的差异</h1>
+<pre><code>$ git diff [first-branch]...[second-branch]
+</code></pre>
+<h1 id="显示今天你写了多少行代码">显示今天你写了多少行代码</h1>
+<pre><code>$ git diff --shortstat &quot;@{0 day ago}&quot;
+</code></pre>
+<h1 id="显示某次提交的元数据和内容变化">显示某次提交的元数据和内容变化</h1>
+<pre><code>$ git show [commit]
+</code></pre>
+<h1 id="显示某次提交发生变化的文件">显示某次提交发生变化的文件</h1>
+<pre><code>$ git show --name-only [commit]
+</code></pre>
+<h1 id="显示某次提交时某个文件的内容">显示某次提交时，某个文件的内容</h1>
+<pre><code>$ git show [commit]:[filename]
+</code></pre>
+<h1 id="显示当前分支的最近几次提交">显示当前分支的最近几次提交</h1>
+<pre><code>$ git reflog
+</code></pre>
+<h1 id="从本地master拉取代码更新当前分支branch-一般为master">从本地master拉取代码更新当前分支：branch 一般为master</h1>
+<pre><code>$ git rebase [branch]
+</code></pre>
+<blockquote>
+<p>八、远程同步</p>
+</blockquote>
+<h1 id="下载远程仓库的所有变动">下载远程仓库的所有变动</h1>
+<pre><code>$ git fetch [remote]
+</code></pre>
+<h1 id="显示所有远程仓库">显示所有远程仓库</h1>
+<pre><code>$ git remote -v
+</code></pre>
+<h1 id="显示某个远程仓库的信息">显示某个远程仓库的信息</h1>
+<pre><code>$ git remote show [remote]
+</code></pre>
+<h1 id="增加一个新的远程仓库并命名">增加一个新的远程仓库，并命名</h1>
+<pre><code>$ git remote add [shortname] [url]
+</code></pre>
+<h1 id="取回远程仓库的变化并与本地分支合并">取回远程仓库的变化，并与本地分支合并</h1>
+<pre><code>$ git pull [remote] [branch]
+</code></pre>
+<h1 id="上传本地指定分支到远程仓库">上传本地指定分支到远程仓库</h1>
+<pre><code>$ git push [remote] [branch]
+</code></pre>
+<h1 id="强行推送当前分支到远程仓库即使有冲突">强行推送当前分支到远程仓库，即使有冲突</h1>
+<pre><code>$ git push [remote] --force
+</code></pre>
+<h1 id="推送所有分支到远程仓库">推送所有分支到远程仓库</h1>
+<pre><code>$ git push [remote] --all
+</code></pre>
+<blockquote>
+<p>九、撤销</p>
+</blockquote>
+<h1 id="恢复暂存区的指定文件到工作区">恢复暂存区的指定文件到工作区</h1>
+<pre><code>$ git checkout [file]
+</code></pre>
+<h1 id="恢复某个commit的指定文件到暂存区和工作区">恢复某个commit的指定文件到暂存区和工作区</h1>
+<pre><code>$ git checkout [commit] [file]
+</code></pre>
+<h1 id="恢复暂存区的所有文件到工作区">恢复暂存区的所有文件到工作区</h1>
+<pre><code>$ git checkout .
+</code></pre>
+<h1 id="重置暂存区的指定文件与上一次commit保持一致但工作区不变">重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</h1>
+<pre><code>$ git reset [file]
+</code></pre>
+<h1 id="重置暂存区与工作区与上一次commit保持一致">重置暂存区与工作区，与上一次commit保持一致</h1>
+<pre><code>$ git reset --hard
+</code></pre>
+<h1 id="重置当前分支的指针为指定commit同时重置暂存区但工作区不变">重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</h1>
+<pre><code>$ git reset [commit]
+</code></pre>
+<h1 id="重置当前分支的head为指定commit同时重置暂存区和工作区与指定commit一致">重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</h1>
+<pre><code>$ git reset --hard [commit]
+</code></pre>
+<h1 id="重置当前head为指定commit但保持暂存区和工作区不变">重置当前HEAD为指定commit，但保持暂存区和工作区不变</h1>
+<pre><code>$ git reset --keep [commit]
+</code></pre>
+<h1 id="新建一个commit用来撤销指定commit">新建一个commit，用来撤销指定commit</h1>
+<h1 id="后者的所有变化都将被前者抵消并且应用到当前分支">后者的所有变化都将被前者抵消，并且应用到当前分支</h1>
+<pre><code>$ git revert [commit]
+</code></pre>
+<h1 id="暂时将未提交的变化移除稍后再移入">暂时将未提交的变化移除，稍后再移入</h1>
+<pre><code>$ git stash
+$ git stash pop
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://heluchao.github.io//tag/qF4bYP6XFW" class="tag">
+                    GitHub
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://heluchao.github.io//post/frontEndProgramTwo">
+                  <h3 class="post-title">
+                    前端算法总结（二）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'cd0fb4c7d85811f8fac4',
+        clientSecret: 'aa3ef375b1836a38370167949faf3f76ca50381f',
+        repo: 'HeLuChao.github.io',
+        owner: 'HeLuChao',
+        admin: ['HeLuChao'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

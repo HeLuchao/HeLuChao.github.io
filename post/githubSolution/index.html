@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于我 | 个人博客</title>
+<title>使用Github提示无权限问题解决方案 | 个人博客</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,47 +98,56 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于我</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">使用Github提示无权限问题解决方案</h2>
+            <div class="post-date">2019-07-18</div>
             
-              <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/2e/wallhaven-2e3x6m.png')">
+              <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/q6/wallhaven-q6leeq.jpg')">
               </div>
             
             <div class="post-content">
-              <p>个人资料以及简介如下：</p>
+              <p>在我们使用Github拉取代码提示无权限问题时，具体的解决方案如下：</p>
 <!-- more -->
-<h2 id="个人资料">个人资料</h2>
-<pre><code>性    别： 男
-出生年月： 1994/02 	
-学    历： 本科
-现居地：北京顺义 	
-工作经验： 4年          
+<h3 id="1首先确认电脑上安装的有git客户端">1.首先确认电脑上安装的有Git客户端</h3>
+<p><a href="https://git-scm.com/downloads">GitHub</a></p>
+<pre><code>具体步骤不再赘述
 </code></pre>
-<h3 id="专业技能">专业技能</h3>
-<pre><code>1、具有良好的编程基础和编码习惯，能理解面向对象的思想，掌握W3C标准。
-2、熟悉JavaScript编程，熟练掌握ES6新特性，了解ES7、ES8部分新特性。
-3、对JavaScript 函数式编程、面向对象编程、工程化、组件化有一定理解，熟悉 Webpack、Gulp 等前端自动化工具。
-4、熟悉Flex布局、Bootstrap进行响应式开发，能够使用MUI进行移动端开发。
-5、熟练掌握HTML5、CSS3页面开发技术,表单提交验证,了解canvas、视频、音频播放器等,运用于WEB端。
-6、熟练掌握Javascript 语言特性，AJAX技术及相关技术操作、闭包、原型链 、DOM 、BOM 相关操作、处理json 数据交互格式，了解封装库的主要思路及思想，熟练使用jQuery。
-7、熟练掌握Angular1.0、React、Vue、ReactNative等前端框架、Echarts图表、微信小程序开发等。
-8、熟悉Nodejs、Mongodb数据库、Express框架，能够使用nodejs实现部分的后台功能。
-9、熟悉PHP语法，以及ThinkPHP5.0框架、MySql数据库操作。
-10、熟练使用photoshop、WebStorm、HBuilder、sublime等开发软件以及Svn、Git等代码管理工具以及npm命令行操作等。
-11、对前端性能优化、浏览器、移动端兼容性问题有一定了解。
-12、了解TypeScript、Flutter、Dart、Deno等语言新发展。
+<h3 id="2使用命令确认自己的git账号密码前提是之前已经登陆过">2.使用命令确认自己的git账号密码（前提是之前已经登陆过）</h3>
+<pre><code>git config --global --list 
 </code></pre>
+<h3 id="3生成本地ssh">3.生成本地ssh</h3>
+<pre><code>ssh-keygen -t rsa -C 邮箱
+</code></pre>
+<h3 id="4测试ssh连接是否成功">4.测试ssh连接是否成功</h3>
+<pre><code>ssh -v git@github.com
+</code></pre>
+<h3 id="5复制上一步生成的ssh私钥">5.复制上一步生成的ssh私钥</h3>
+<pre><code>具体路径为上一步生成ssh文件后的提示里面
+打开yourpath/.ssh/id_rsa.pub（.pub为公钥文件，id_rsa为私钥文件），复制里面的内容。
+</code></pre>
+<h3 id="6git上面创建ssh-key">6.Git上面创建SSH key</h3>
+<pre><code>打开https://github.com/settings/profile，在SSH key那栏选择New SSH Key，并将复制内容拷贝到其中，选择保存。
+</code></pre>
+<p><a href="https://www.cnblogs.com/wmr95/p/7852832.html">参考链接</a></p>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://heluchao.github.io//tag/JUMfB8bokM" class="tag">
-                    About
+                  <a href="https://heluchao.github.io//tag/qF4bYP6XFW" class="tag">
+                    GitHub
                   </a>
                 
               </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://heluchao.github.io//post/HexoBlogMultiDeviceManage">
+                  <h3 class="post-title">
+                    Hexo博客多设备管理方案
+                  </h3>
+                </a>
+              </div>
             
 
             

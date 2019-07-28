@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>使用Hexo搭建博客之Next主题配置（一） | 个人博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://heluchao.github.io//favicon.ico?v=1564283240584">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://heluchao.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://heluchao.github.io/">
+        <img src="https://heluchao.github.io//images/avatar.png?v=1564283240584" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://heluchao.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">使用Hexo搭建博客之Next主题配置（一）</h2>
+            <div class="post-date">2019-07-19</div>
+            
+              <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/j5/wallhaven-j5vr3m.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>有关于使用Hexo构建博客时使用Next主题的童鞋可以参考下面的一些配置：</p>
+<!-- more -->
+<blockquote>
+<p>一、基本配置</p>
+</blockquote>
+<pre><code>在 Hexo 中有两份主要的配置文件，其名称都是 _config.yml。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。
+为了描述方便，在以下说明中，将前者称为 站点配置文件， 后者称为 主题配置文件。
+</code></pre>
+<blockquote>
+<p>1、站点基本设置<br>
+在站点配置文件 即博客根目录下的_config.yml中</p>
+</blockquote>
+<pre><code># Site
+title: HeLuChaoの博客
+subtitle: 心有猛虎，细嗅蔷薇！
+description: 记录生活的点点滴滴
+keywords: 博客
+author: HeLuChao
+language: zh-Hans
+timezone:
+</code></pre>
+<blockquote>
+<p>2、头像设置<br>
+2.1 设置头像<br>
+在站点配置文件 中新增avatar，值设置为头像的链接地址。地址可以是网络地址，也可以是本地地址（放置在source/images/ 目录下）<br>
+侧边栏头像设置</p>
+</blockquote>
+<pre><code>avatar: /images/user.jpg
+</code></pre>
+<blockquote>
+<p>2.2 头像旋转动画<br>
+打开\themes\next\source\css_common\components\sidebar\sidebar-author.styl，在里面添加如下代码：</p>
+</blockquote>
+<pre><code>设置头像
+.site-author-image {
+  display: block;
+  margin: 0 auto;
+  padding: $site-author-image-padding;
+  max-width: $site-author-image-width;
+  height: $site-author-image-height;
+  border: $site-author-image-border-width solid $site-author-image-border-color;
+ 头像圆形 
+  border-radius: 80px;
+  -webkit-border-radius: 80px;
+  -moz-border-radius: 80px;
+  box-shadow: inset 0 -1px 0 #333sf;
+  设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]
+ 鼠标经过头像旋转360度
+  -webkit-transition: -webkit-transform 1.0s ease-out;
+  -moz-transition: -moz-transform 1.0s ease-out;
+  transition: transform 1.0s ease-out;
+}
+ 
+img:hover {
+  鼠标经过停止头像旋转 
+  -webkit-animation-play-state:paused;
+  animation-play-state:paused;
+ 
+  鼠标经过头像旋转360度
+  -webkit-transform: rotateZ(360deg);
+  -moz-transform: rotateZ(360deg);
+  transform: rotateZ(360deg);
+}
+ 
+ Z 轴旋转动画
+@-webkit-keyframes play {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+  }
+}
+@-moz-keyframes play {
+  0% {
+    -moz-transform: rotateZ(0deg);
+  }
+  100% {
+    -moz-transform: rotateZ(-360deg);
+  }
+}
+@keyframes play {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(-360deg);
+  }
+}
+</code></pre>
+<blockquote>
+<p>3、主题布局设置</p>
+</blockquote>
+<pre><code>在主题配置文件即在next主题目录下的_config.yml文件中将scheme设定为Pisces,可根据个人喜好设置成其他的值
+Schemes
+scheme: Muse
+scheme: Mist
+scheme: Pisces
+scheme: Gemini
+</code></pre>
+<blockquote>
+<p>4、菜单项设置</p>
+</blockquote>
+<pre><code>在主题配置文件中的menu中设置，增添一个movies
+注：千万不要在这设置中文，后面的值那是查找文件的地方！
+如下
+menu:
+  home: / || home
+  about: /about/ || user
+  tags: /tags/ || tags
+  categories: /categories/ || th
+  #archives: /archives
+  #search: /search
+  #schedule: /schedule/ || calendar
+  #sitemap: /sitemap.xml || sitemap
+  #commonweal: /404
+  movies: /movies || film
+这些配置都要与你主题目录下的languages文件中对应的yml文档里配置相关联。
+比如你在站点根目录中的配置文件设置language为zh-Hans，那么就要进入到主题目录下的languages文件中修改zh-Hans.yml，这样才能显示出菜单项新增的中文内容
+menu:
+  home: 首页
+  archives: 归档
+  categories: 分类
+  tags: 标签
+  about: 关于
+  search: 搜索
+  schedule: 日程表
+  sitemap: 站点地图
+  commonweal: 公益404
+  movies: 电影
+</code></pre>
+<blockquote>
+<p>5、菜单项图标设置</p>
+</blockquote>
+<pre><code>在主题配置文件中对应的字段是menu_icons。格式为item name：icon name，其中item name与所配置的菜单名字对应，icon name是Font Awesome图标的名字。而 enable 可用于控制是否显示图标，你可以设置成 false 来去掉图标。
+menu_icons:
+  enable: true
+  home: home
+  about: user
+  categories: th
+  tags: tags
+  archives: archive
+  commonweal: heartbeat
+  movies: film
+新建的栏目icon，需要在Font Awesome图标库存在，例如新建的movies，在图标库中查询选择film图标，在主题配置文件的menu_icons中，更改movies: film
+</code></pre>
+<blockquote>
+<p>6、侧栏位置设置</p>
+</blockquote>
+<pre><code>在主题配置文件中修改主题目录下sidebar的position值
+sidebar:
+  # Sidebar Position, available value: left | right (only for Pisces | Gemini).
+  position: left
+  #position: right
+</code></pre>
+<blockquote>
+<p>7、添加标签页面</p>
+</blockquote>
+<pre><code>前面通过修改next主题下的_config.yml文件中的menu选项，可以在主页面的菜单栏添加标签选项，但是此时点击标签，跳转的页面会显示page not found。此时我们要新建一个页面
+在git bush中输入hexo new page tags
+在新建的index.md文件中添加type: &quot;tags&quot;
+---
+title: tags
+date: 2019-02-18 17:16:00
+type: &quot;tags&quot;
+---
+当要为某一篇文章添加标签，只需在blog/source/_post目录下的具体文章的tags中添加标签即可
+</code></pre>
+<blockquote>
+<p>8、侧边栏社交栏目</p>
+</blockquote>
+<pre><code>侧栏社交链接的修改包含两个部分，第一是链接，第二是链接图标。 两者配置均在 主题配置文件 中
+（1）链接放置在 social 字段下，一行一个链接。其键值格式是 显示文本: 链接地址。
+# Social links
+social:
+  GitHub: https://github.com/your-user-name
+  Twitter: https://twitter.com/your-user-name
+  微博: http://weibo.com/your-user-name
+  豆瓣: http://douban.com/people/your-user-name
+  知乎: http://www.zhihu.com/people/your-user-name
+  # 等等
+（2）设定链接的图标，对应的字段是 social_icons。其键值格式是 匹配键: Font Awesome 图标名称， 匹配键 与上一步所配置的链接的 显示文本 相同（大小写严格匹配），图标名称 是 Font Awesome 图标的名字（不必带 fa- 前缀）。 enable 选项用于控制是否显示图标，你可以设置成 false 来去掉图标。
+其中seoial_icons节点中后面的值是http://fontawesome.io/icons/ 中提供的图标的名称。之后其他链接如推特，微博等都可自行增减。
+# Social Icons
+social_icons:
+  enable: true
+  # Icon Mappings
+  GitHub: github
+  Twitter: twitter
+  微博: weibo
+</code></pre>
+<blockquote>
+<p>9、显示当前浏览进度</p>
+</blockquote>
+<pre><code>主题配置文件 即themes/*/_config.yml中的b2t（返回顶部）及scrollpercent（浏览百分数）
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://heluchao.github.io//tag/36bjyvTlgQ" class="tag">
+                    Blog
+                  </a>
+                
+                  <a href="https://heluchao.github.io//tag/bvvMHCbh7Y" class="tag">
+                    Next
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://heluchao.github.io//post/frontEndRules">
+                  <h3 class="post-title">
+                    前端开发规范
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'cd0fb4c7d85811f8fac4',
+        clientSecret: 'aa3ef375b1836a38370167949faf3f76ca50381f',
+        repo: 'HeLuChao.github.io',
+        owner: 'HeLuChao',
+        admin: ['HeLuChao'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

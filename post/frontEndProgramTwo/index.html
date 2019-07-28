@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>前端算法总结（二） | 个人博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://heluchao.github.io//favicon.ico?v=1564283240584">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://heluchao.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://heluchao.github.io/">
+        <img src="https://heluchao.github.io//images/avatar.png?v=1564283240584" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://heluchao.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">前端算法总结（二）</h2>
+            <div class="post-date">2019-07-23</div>
+            
+              <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/p8/wallhaven-p8yvmm.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>前端方面有关算法的一些总结</p>
+<!-- more -->
+<blockquote>
+<p>前端面试必备编程题<br>
+1.函数记忆,判断是不是质数.</p>
+</blockquote>
+<pre><code>方法一:
+function isPrime1(n){
+      if(n&lt;=3){return true}
+      else{
+        for(var i=2;i&lt;Math.sqrt(n);i++){
+          if(n%i==0){return false;}
+        }
+        return true;
+      }
+};
+方法二:hash
+    var isPrime2=(function(){//hash
+      var hash={};
+      return function(n){
+        if(n&lt;=3){return true}
+        else if(hash[n]!==undefined){
+          return hash[n];
+        }else{
+          for(var i=2;i&lt;Math.sqrt(n);i++){
+            if(n%i==0){return hash[n]=false}
+          }
+          return hash[n]=true;
+        }
+      }
+})();
+</code></pre>
+<blockquote>
+<p>2.数组去重</p>
+</blockquote>
+<pre><code>方法一:
+var arr1=[1,2,3,2,1,2];
+    function repeat1(arr){
+      for(var i=0,arr2=[];i&lt;arr.length;i++){
+        if(arr2.indexOf(arr[i])==-1){
+          arr2.push(arr[i]);
+        }
+      }//(遍历结束)
+      return arr2;
+}
+方法二:hash
+function repeat2(arr){
+      //遍历arr中每个元素，同时声明hash
+      for(var i=0,hash={};i&lt;arr.length;i++){
+       //hash中是否包含当前元素值的建
+    //如果不包含,就hash添加一个新元素，以当前元素值为key，value默认为1
+        if(hash[arr[i]]===undefined){
+          hash[arr[i]]=1;
+        }
+      }//(遍历结束)
+      //将hash转为索引:
+      var i=0;
+      var arr2=[];
+      for(arr2[i++] in hash);
+      return arr2;
+}
+方法三:
+function repeat3(arr){
+      return arr.sort()
+               .join(&quot;,,&quot;)
+               .replace(
+                /(^|,,)([^,]+)(,,\2)*/g,
+                &quot;$1$2&quot;)
+               .split(&quot;,,&quot;);
+    }
+ console.log(repeat3(arr1));
+</code></pre>
+<blockquote>
+<p>3.插入排序</p>
+</blockquote>
+<pre><code>var arr=[2,4,1,5,3];
+    function insertSort(arr){
+      //遍历arr中每个元素(i从1开始)
+      for(var i=1;i&lt;arr.length;i++){
+        //将当前元素临时保存在变量t中
+        var t=arr[i];
+        var p=i-1;//声明变量p=i-1
+        //循环:(arr[p]&gt;t&amp;&amp;p&gt;=0){
+        while(arr[p]&gt;t&amp;&amp;p&gt;=0){
+       //将p位置的值，赋值给p+1位置
+          arr[p+1]=arr[p];
+          p--;//p--
+        }//(循环结束)
+        arr[p+1]=t;//将t放在p+1的位置上
+      }//(循环结束)
+    }
+    insertSort(arr);
+console.log(String(arr));
+</code></pre>
+<blockquote>
+<p>4.快速排序:</p>
+</blockquote>
+<pre><code>    function quickSort(arr){
+      //如果arr的length&lt;=1
+      if(arr.length&lt;=1){
+        return arr;//就直接返回arr
+      }
+      //计算参照位p
+      var p=Math.floor(arr.length/2);
+      var left=[];
+      var right=[];
+      //删除p位置的元素
+      var center=arr.splice(p,1)[0];
+      //遍历arr中每个元素
+      for(var i=0;i&lt;arr.length;i++){
+        if(arr[i]&gt;=center){
+          right.push(arr[i]);
+        }else{
+          left.push(arr[i]);
+        }
+      }
+      return quickSort(left) .concat(center,quickSort(right))
+    }
+    var sortedArr=quickSort(arr);
+    console.log(String(sortedArr));
+</code></pre>
+<blockquote>
+<p>5.正则表达式</p>
+</blockquote>
+<pre><code>(1) &quot;ryan5 is6 not7 a8 good9 man10&quot;
+var n=5;
+var str=&quot;ryan is not a good man&quot;;
+str=str.replace(/\b[a-z]+\b/g,function(kw){ return kw+n++;});
+console.log(str);
+</code></pre>
+<blockquote>
+<p>6.统计字符串中每种字符出现的次数,出现次数最多的是? 出现?次</p>
+</blockquote>
+<pre><code>   var str=&quot;helloworld&quot;;
+   方法一：用hash
+   for(var i=0,hash={};i&lt;str.length;i++){
+     if(hash[str[i]]){
+       hash[str[i]]++
+     }else{
+       hash[str[i]]=1;
+     }
+   }
+   console.dir(hash);
+方法二：用正则
+var arr=str.split(&quot;&quot;)
+   .sort()
+   .join(&quot;&quot;)
+   .match(/([a-z])\1*/g)
+   .sort(function(a,b){
+return b.length-a.length; })
+console.log(&quot;出现最多的是: &quot;+arr[0][0]
+   +&quot;共&quot;+arr[0].length+&quot;次&quot;);
+var hash={};
+   arr.forEach(function(val){
+     hash[val[0]]=val.length;
+   });
+   console.dir(hash);
+</code></pre>
+<blockquote>
+<p>7.数组降维</p>
+</blockquote>
+<pre><code>var arr=[
+      [0,0,0,0],
+      [0,0,0,0],
+      [0,0,0,0],
+      [0,0,0,0],
+    ];
+    //method 1:
+    for(var r=0,arr1=[];r&lt;arr.length;r++){
+      for(var c=0;c&lt;arr[r].length;c++){
+        arr1.push(arr[r][c]);
+      }
+    }
+    console.dir(arr1);
+    //method 2: 
+    for(var r=0,arr2=[];r&lt;arr.length;r++){
+      arr2=arr2.concat(arr[r]);
+    }
+    console.dir(arr2);
+  //method 3:
+    var arr2=[].concat.apply([],arr);
+    console.dir(arr2);
+</code></pre>
+<blockquote>
+<p>8.Function赋值</p>
+</blockquote>
+<pre><code>    var f=function(){var a=b=1;}
+    f();
+    console.log(b);//1
+    console.log(a);//报错
+    var f=function(){var a=b=1;}
+    setTimeout(f,0);
+    console.log(b);//报错
+    f();
+    var a,b=0, fn=function(){var a=b=2;}
+    fn();
+    console.log(a);//undefined
+    console.log(b);//2
+</code></pre>
+<blockquote>
+<p>9.函数currying(柯里华)</p>
+</blockquote>
+<pre><code>    var getN;
+    function add(n){
+      getN=function(){console.log(n);}
+      return function(m){
+        n+=m;
+      arguments.callee.toString=function(){
+          return n;
+        }
+        return arguments.callee;
+      }
+    }
+    add(1)(2)(3); getN();//6
+    add(1)(2)(3)(4); getN();//10
+    alert(add(1)(2)(3));//6
+    alert(add(1)(2)(3)(4));//10
+</code></pre>
+<blockquote>
+<p>10.递归</p>
+</blockquote>
+<pre><code>var emp={
+   work:function(){//3,2,1
+    var  sum=0;//+3+2+1 +2+1  +1
+    for(vari=0; i&lt;arguments.length&amp;&amp;arguments[0]&gt;0;
+          i++){
+          sum+=arguments[i]
+              +arguments.callee(
+                --arguments[i]
+              );
+        }
+        return sum;
+      }
+    }
+    console.log(emp.work(3,2,1));//10
+</code></pre>
+<blockquote>
+<p>11.闭包</p>
+</blockquote>
+<pre><code>（1）function fun(n,o){//外层函数
+      console.log(o);
+      return {
+        fun:function(m){//内层函数 n
+          return fun(m,n);
+        }
+      }
+    }
+    var a=fun(0);a.fun(1); a.fun(2); a.fun(3);
+     //undefined  0      0       0
+var a=fun(0).fun(1).fun(2).fun(3);
+//undefined   0    1    2
+var a=fun(0).fun(1); a.fun(2); a.fun(3);
+//undefined  0       1      1
+（2）var a=0,b=0;
+    function A(a){
+      A=function(b){alert(a+b++)};
+      alert(a);
+    }
+    A(1);//1
+    A(12);//13
+</code></pre>
+<blockquote>
+<p>12.面向对象OOP</p>
+</blockquote>
+<pre><code>（1）
+window.a=300;
+    function fn1(){
+      this.a=100;
+      this.b=200;
+      return function(){
+                alert(this.a)
+              }.call(arguments[0])
+    }
+    function fn2(){ this.a=new fn1(); }
+var a=new fn1().b;//300
+var v=new fn1(fn2());//[object Object]
+（2）
+var number=2;//4  8
+    var obj={
+      number:4,//8
+      fn1:(function(){
+        //var number;
+        this.number*=2;
+number*=2; //声明提前  undefined
+        var number=3;
+        return function(){
+          this.number*=2;
+          number*=3;
+          alert(number);
+        }
+      })()
+    }
+    var fn1=obj.fn1;
+    alert(number); fn1(); obj.fn1(); 
+    //4           9      27
+    alert(window.number);//8
+    alert(obj.number);//8
+（3）
+function Foo(){
+    getName=function(){alert(1);};
+      return this;
+  }
+  Foo.getName=function(){alert(2);};
+  Foo.prototype.getName=function(){
+    alert(3);
+  };
+  var getName=function(){alert(4);};
+  function getName(){ alert(5); };
+  Foo.getName();//2
+  getName();//4
+  Foo().getName();//1
+  getName();//1
+  new Foo.getName();//2
+  new Foo().getName();//3
+  new new Foo().getName();//3
+（4）
+  var a=1;
+  var b={
+    a:2,
+    b:function(){
+      console.log(this.a);//1
+    }(), 
+    f:this.f=function(){
+      console.log(this.a);
+    }
+  };
+  function f(){ console.log(3); }
+  f();//1
+  b.f();//2
+  (b.f)();//2
+  (0,b.f)();//1
+（5）
+  var foo=function(){
+    console.log(this.a);
+  }
+  var obj={a:2,foo:foo};
+  var a=10;
+  var bar=obj.foo;
+  var bar2=foo.bind(obj);
+  bar();//10
+  bar2();//2
+  foo();//10
+  obj.foo();//2
+  setTimeout(bar,0);//10
+（6）
+function MyObj(){ 
+    this.p.pid++; 
+  }
+  MyObj.prototype.p={&quot;pid&quot;:0}//2
+MyObj.prototype.getNum=function(num){
+    return this.p.pid+num;
+  }
+  var _obj1=new MyObj(); //创建新对象，继承原型pid+1
+  var _obj2=new MyObj(); //创建新对象，继承原型pid+2
+  console.log(
+    _obj1.getNum(1)+_obj2.getNum(2)
+  );//7      2+1   +    2+2
+</code></pre>
+<blockquote>
+<p>13.判断一个对象是不是数组类型，有五种方法：</p>
+</blockquote>
+<pre><code>(1) typeof 无法判断 只能判断原始类型的值和函数
+(2)isPrototypeOf 判断父及对象   可检查整个原型链 //可能继承自数组
+    console.log(Array.prototype.isPrototypeOf([])?&quot;是数组&quot;:&quot;不是数组&quot;);
+    console.log(Array.prototype.isPrototypeOf({})?&quot;是数组&quot;:&quot;不是数组&quot;);
+    console.log(Array.prototype.isPrototypeOf(function(){})?&quot;是数组&quot;:&quot;不是数组&quot;);�
+(3)constructor 检查指定对象的构造函数 可检查整个原型链  //可能继承自数组
+    var father={};
+    var son={};
+    father.__proto__=Array.prototype;
+    son.__proto__=father;
+    console.log(son.contructor==Array?&quot;是数组&quot;:&quot;不是数组&quot;)
+    console.log({}.contructor==Array?&quot;是数组&quot;:&quot;不是数组&quot;);
+    console.log(function(){}.contructor==Array?&quot;是数组&quot;:&quot;不是数组&quot;);�
+(4)instanceof 检查一个对象是否是制定构造函数的实例 可检查整个原型链 //可能继承自数组
+    var father={};
+    var son={};
+    father.__proto__=Array.prototype;
+    son.__proto__=father;
+    console.log(son instanceof Array?&quot;是数组&quot;:&quot;不是数组&quot;);
+    console.log({} instanceof Array?&quot;是数组&quot;:&quot;不是数组&quot;);
+    console.log(function(){} instanceof Array?&quot;是数组&quot;:&quot;不是数组&quot;);
+(5)强行用要检查的对象，调用原始的toString方法  不检查整个原型链
+        //[object class]: class-Array Date Object
+        //只能检查最初就是数组创建的对象。
+        console.log(Object.prototype.toString.call([])==&quot;[object Array]&quot;?&quot;是数组&quot;:&quot;不是数组&quot;);
+        console.log(Object.prototype.toString.call({}));
+        console.log(Object.prototype.toString.call(function(){}));
+        console.log(Object.prototype.toString.call(/\d/));
+        var father={};
+         var son={};
+         father.__proto__=Array.prototype;
+         son.__proto__=father;
+        console.log(Object.prototype.toString.call(son)==&quot;[object Array]&quot;?&quot;是数组&quot;:&quot;不是数组&quot;);//不是
+        //结论: 对象一旦创建，class属性就无法修改
+               //修改继承关系，也无法修改class属性
+
+(6) Array.isArray(obj)  不检查整个原型链
+        console.log(Array.isArray([]));
+        console.log(Array.isArray({}));
+    //如果浏览器不支持isArray
+    if(Array.prototype.isArray===undefined){//if(!Array.isArray)
+        //给?添加isArray方法
+        Array.prototype.isArray=function(arg){
+            //强行调用原始toString方法，和&quot;[object Array]&quot;比较
+            return Object.prototype.toString.call(arg)
+            ==&quot;[object Array]&quot;?&quot;是数组&quot;:&quot;不是数组&quot;;
+        }
+    }
+</code></pre>
+<blockquote>
+<p>14.自定义Object.create()——手写</p>
+</blockquote>
+<pre><code>    Object.create=function(father,props){
+        console.log(&quot;我的create&quot;);
+        /*使用setPrototypeOf方法
+        var o=Object();//1. 创建空对象
+        Object.setPrototypeOf(o,father);//2. 继承father
+        */
+        /*不使用setPrototypeOf方法
+        function Constructor(){}
+        Constructor.prototype=father;
+        var o=new Constructor();
+        */
+        Object.defineProperties(o,props);//3. 定义新属性
+        return o;
+    }
+</code></pre>
+<blockquote>
+<p>15.深克隆原理</p>
+</blockquote>
+<pre><code>Object.clone=function(obj){//深克隆
+if(typeof(obj)==&quot;object&quot;){//如果obj是对象
+    var o=//有必要区分数组和普通对象
+    Object.prototype.toString.call(obj)==&quot;[object Array]&quot;?[]:{};
+        for(var key in obj){//遍历obj的自有属性
+            //如果key是obj的自有属性
+            if(obj.hasOwnProperty(key)){
+                o[key]=arguments.callee(obj[key]);//arguments.callee调的是当前的Object.clone函数
+                }
+        }
+        return o;
+        }else{//如果obj是原始类型的值，就直接返回副本
+            return obj;
+        }
+    }
+
+如果浏览器不支持every属性,every的实现原理
+    if(Array.prototype.every===undefined){
+       Array.prototype.every=function(fun){
+        //遍历当前数组中每个元素
+        for(var i=0;i&lt;this.length;i++){
+            if(this[i]!==undefined){
+//调用fun,依次传入当前元素值,位置i,当前数组作为参数  ，将返回值，保存在变量r中
+            var r=fun(this[i],i,this);
+            if(r==false){//如果r为false
+               return false;//返回false
+            }
+            }
+             }//(遍历结束)
+         return true;//返回true
+       }
+    }
+
+如果浏览器不支持some属性，some的实现原理
+    if(Array.prototype.some===undefined){
+       Array.prototype.some=function(fun){
+          for(var i=0;i&lt;this.length;i++){
+          if(this[i]!==unefined){
+            var r=fun(this[i],i,this);
+                if(r==true){ return true; }
+                  }
+              }
+          return false;
+       }    
+    }
+
+浏览器不支持map属性,map的实现原理
+    if(Array.prototype.map===undefined){
+       Array.prototype.map=function(fun){
+        //创建空数组: newArr
+        var newArr=[];
+        //遍历当前数组中每个元素
+        for(var i=0;i&lt;this.length;i++){
+           //如果当前元素不是undefined
+           if(this[i]!==undefined){//判断稀疏数组
+//调用fun传入当前元素值，位置i，当前数组，将结果保存在r中
+                //将newArr的i位置赋值为r
+            var r=fun(this[i],i,this);
+                    newArr[i]=r;
+           }
+        }//(遍历结束)
+        return newArr;//返回newArr
+       }
+    }
+
+如果浏览器不支持reduce属性,reduce的实现原理
+    if(Array.prototype.reduce===undefined){
+       Array.prototype.reduce=function(fun,base){
+         base===undefined&amp;&amp;(base=0);
+         for(var i=0;i&lt;this.length;i++){
+        if(this[i]!==undefined){
+           base=fun(base,this[i],i,this);
+        }
+             }
+         return base;
+           }
+    }
+
+如果浏览器不支持bind属性, bind函数的实现原理
+       if(Function.prototype.bind===undefined){
+       Function.prototype.bind=function(obj/*，参数列表*/){
+        var fun=this;//留住this
+                //*****将类数组对象，转化为普通数组
+        var args=Array.prototype.slice.call(arguments,1);
+        //args保存的就是提前绑定的参数列表
+        /*function slice(1){
+           var sub=[];
+           for(var i=0;i&lt;length;i++){
+            sub.push(arguments[i]);
+           }
+           return sub;
+        }*/
+        return function(){
+                   //将后传入的参数值，转为普通数组      
+           var innerArgs=Array.prototype.slice.call(arguments);//将之前绑定的参数值和新传入的参数值，拼接为完整参数之列表
+           var allArgs=args.concat(innerArgs)
+          //调用原始函数fun，替换this为obj，传入所有参数
+          fun.apply(obj,allArgs);
+        }
+       }
+    }
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://heluchao.github.io//tag/n7heRszkgO" class="tag">
+                    frontEnd
+                  </a>
+                
+                  <a href="https://heluchao.github.io//tag/oYhJSIdBWD" class="tag">
+                    Program
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://heluchao.github.io//post/frontendProgram">
+                  <h3 class="post-title">
+                    前端算法总结（一）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'cd0fb4c7d85811f8fac4',
+        clientSecret: 'aa3ef375b1836a38370167949faf3f76ca50381f',
+        repo: 'HeLuChao.github.io',
+        owner: 'HeLuChao',
+        admin: ['HeLuChao'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>使用Hexo搭建博客之Next主题配置（二） | 个人博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://heluchao.github.io//favicon.ico?v=1564283240584">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://heluchao.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://heluchao.github.io/">
+        <img src="https://heluchao.github.io//images/avatar.png?v=1564283240584" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://heluchao.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">使用Hexo搭建博客之Next主题配置（二）</h2>
+            <div class="post-date">2019-07-19</div>
+            
+              <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/lm/wallhaven-lm2rzq.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>有关于使用Hexo构建博客时使用Next主题的童鞋可以参考下面的一些配置：</p>
+<!-- more -->
+<blockquote>
+<p>二、个性化设置<br>
+1、添加萌萌哒二次元看板娘</p>
+</blockquote>
+<pre><code>1.1、安装插件
+npm install --save hexo-helper-live2d
+1.2、配置
+根目录的 _config.yml 文件或主题的 _config.yml 文件中添加配置.
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  log: false
+  model:
+    use: live2d-widget-model-&lt;你喜欢的模型名字&gt;
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true
+1.3、配置文件
+配置文件有很多方法如下：
+1.3.1 在博客根目录下建文件夹live2d_models；
+1.3.2 再在live2d_models下建文件夹&lt;你喜欢的模型名字&gt;；
+1.3.3 再在&lt;你喜欢的模型名字&gt;下建json文件：&lt;你喜欢的模型名字&gt;.model.json；
+1.4、安装模型
+在命令行（即Git Bash）运行以下命令即可：
+npm install --save live2d-widget-model-&lt;你喜欢的模型名字&gt;
+1.5、查看结果
+在命令行（即Git Bash）运行以下命令， 在http://127.0.0.1:4000/查看测试结果：
+hexo clean &amp;&amp; hexo g &amp;&amp; hexo s
+1.6、更改模型
+若更改模型请从第二步更改model.use；删除第三步原有文件，重新创建，安装模型，查看结果
+</code></pre>
+<blockquote>
+<p>2、实现fork me on github</p>
+</blockquote>
+<pre><code>2.1、点击挑选自己喜欢的样式，并复制代码
+2.2、然后粘贴刚才复制的代码到themes/next/layout/_layout.swig文件中(放在&lt;div class=&quot;headband&quot;&gt;&lt;/div&gt;的下面)，并把href改为你的github地址
+2.3、若位置不对，在 img 标签中修改 style=&quot;position:fixed;top:0;right:0&quot;
+</code></pre>
+<blockquote>
+<p>3、设置网站的图标Favicon</p>
+</blockquote>
+<pre><code>在EasyIcon或者Iconfont中找一张（32*32）的ico图标，并将图标名称改为favicon.ico，然后把图标放在/themes/next/source/images里，并且修改主题配置文件
+</code></pre>
+<blockquote>
+<p>4、首页文章添加阴影效果</p>
+</blockquote>
+<pre><code>打开\themes\next\source\css_custom\custom.styl,向里面加入：
+//文章内容添加边框阴影
+.post {
+   margin-top: 0px;
+   margin-bottom: 60px;
+   padding: 25px;
+   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+</code></pre>
+<blockquote>
+<p>5、网站顶部加载条</p>
+</blockquote>
+<pre><code>修改主题配置文件(_config.yml)将pace: false改为pace: true就行了
+</code></pre>
+<blockquote>
+<p>6、统计文章阅读量</p>
+</blockquote>
+<pre><code>通过leanCloud统计您网站的文章阅读量
+1.注册LeanCloud, 并创建一个你自己的应用;
+2.点击图片右上角的设置图标进入应用界面;
+3.到此，你的应用创建成功，继续表的创建,创建表，并将表的名字命名为：Counter
+4.打开设置 -&gt; 应用key 获取App ID和App Key;
+5.最后打开主题配置文件: themes/*/_config.yml;
+leancloud_visitors:
+  enable: true
+  app_id: #你的app_id
+  app_key: #你的的app_key
+6.完成配置并重新编译。
+</code></pre>
+<blockquote>
+<p>7、文章加密访问</p>
+</blockquote>
+<pre><code>打开themes-&gt;next-&gt;layout-&gt;_partials-&gt;head.swig文件,在以下位置插入这样一段代码然后在文章上写上password
+(function(){ 
+  if('双大括号page.password双大括号'){ 
+if (prompt('请输入文章密码') !== '双大括号page.password双大括号'){
+ alert('密码错误！');
+ history.back();
+ }
+ } })();
+</code></pre>
+<blockquote>
+<p>8、修改链接URL</p>
+</blockquote>
+<pre><code>编辑站点配置文件下的 _config.yml 文件，修改其中的 permalink字段：permalink: :category/:title/
+</code></pre>
+<blockquote>
+<p>9、文章置顶</p>
+</blockquote>
+<pre><code>9.1 安装插件
+npm uninstall hexo-generator-index --save
+npm install hexo-generator-index-pin-top --save
+9.2 在需要置顶的文章中加上top即可，数值越大文章越靠前
+---
+title: 'Next主题配置'
+date: 2019-02-27 15:35:40
+tags: [hexo,github]
+categories: blog,hexo,next
+top: 10
+---
+9.3 设置置顶标志
+打开：/themes/*/layout/_macro/post.swig，定位到&lt;div class=&quot;post-meta&quot;&gt;标签下，插入如下代码：
+{% if post.top %}
+  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;
+  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;
+  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;
+{% endif %}
+</code></pre>
+<blockquote>
+<p>10、隐藏网页底部powered By Hexo / 强力驱动</p>
+</blockquote>
+<pre><code>打开themes/next/layout/_partials/footer.swig,使用&lt;!-- --&gt;隐藏之间的代码即可，或者直接删除。
+</code></pre>
+<blockquote>
+<p>11、实现统计功能</p>
+</blockquote>
+<pre><code>1.在根目录下安装 hexo-wordcount,运行：npm install hexo-wordcount --save
+2.然后在主题配置文件中，配置如下：
+# Post wordcount display settings
+# Dependencies: https://github.com/willin/hexo-wordcount
+post_wordcount:
+  item_text: true
+  wordcount: true
+  min2read: true
+  totalcount: false
+  separated_meta: true
+</code></pre>
+<blockquote>
+<p>12、网站底部字数统计</p>
+</blockquote>
+<pre><code>1.在根目录下安装 hexo-wordcount,运行：npm install hexo-wordcount --save
+2.然后在/themes/next/layout/_partials/footer.swig文件尾部加上：
+&lt;div class=&quot;theme-info&quot;&gt;
+    &lt;div class=&quot;powered-by&quot;&gt;&lt;/div&gt;
+    &lt;span class=&quot;post-count&quot;&gt;博客全站共 双大括号 totalcount(site) 双大括号字&lt;/span&gt;
+  &lt;/div&gt;
+</code></pre>
+<blockquote>
+<p>13、添加 README.md 文件</p>
+</blockquote>
+<pre><code>每个项目下一般都有一个 README.md 文件，但是使用 hexo 部署到仓库后，项目下是没有 README.md 文件的。
+在 Hexo 目录下的 source 根目录下添加一个 README.md 文件，修改站点配置文件 _config.yml，将 skip_render 参数的值设置为skip_render: README.md
+</code></pre>
+<blockquote>
+<p>14、修改文章底部的那个带#号的标签</p>
+</blockquote>
+<pre><code>修改模板/themes/next/layout/_macro/post.swig，搜索 rel=&quot;tag&quot;&gt;#，将 # 换成
+</code></pre>
+<blockquote>
+<p>15、添加RSS</p>
+</blockquote>
+<pre><code>1.站点根目录下安装插件，npm install --save hexo-generator-feed;
+2.在站点配置文件_config.yml中，添加如下内容：
+# Extensions
+## Plugins: http://hexo.io/plugins/
+plugins: hexo-generate-feed
+3.然后再主题配置文件中配置rss;
+rss: /atom.xml
+4.配置完之后运行：hexo clean &amp;&amp; hexo g &amp;&amp; hexo s;
+5.重新生成一次，你会在./public 文件夹中看到 atom.xml 文件。然后启动服务器查看是否有效，之后再部署到 Github 中
+</code></pre>
+<blockquote>
+<p>16、点击出现桃心效果</p>
+</blockquote>
+<pre><code>1.在路径/themes/*/source/js/src里面新建love.js文件并将代码复制进去；
+! function (e, t, a) {
+  function n() {
+    c(&quot;.heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}&quot;), o(), r()
+  }
+
+  function r() {
+    for (var e = 0; e &lt; d.length; e++) d[e].alpha &lt;= 0 ? (t.body.removeChild(d[e].el), d.splice(e, 1)) : (d[e].y--, d[e].scale += .004, d[e].alpha -= .013, d[e].el.style.cssText = &quot;left:&quot; + d[e].x + &quot;px;top:&quot; + d[e].y + &quot;px;opacity:&quot; + d[e].alpha + &quot;;transform:scale(&quot; + d[e].scale + &quot;,&quot; + d[e].scale + &quot;) rotate(45deg);background:&quot; + d[e].color + &quot;;z-index:99999&quot;);
+    requestAnimationFrame(r)
+  }
+
+  function o() {
+    var t = &quot;function&quot; == typeof e.onclick &amp;&amp; e.onclick;
+    e.onclick = function (e) {
+      t &amp;&amp; t(), i(e)
+    }
+  }
+
+  function i(e) {
+    var a = t.createElement(&quot;div&quot;);
+    a.className = &quot;heart&quot;, d.push({
+      el: a,
+      x: e.clientX - 5,
+      y: e.clientY - 5,
+      scale: 1,
+      alpha: 1,
+      color: s()
+    }), t.body.appendChild(a)
+  }
+
+  function c(e) {
+    var a = t.createElement(&quot;style&quot;);
+    a.type = &quot;text/css&quot;;
+    try {
+      a.appendChild(t.createTextNode(e))
+    } catch (t) {
+      a.styleSheet.cssText = e
+    }
+    t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)
+  }
+
+  function s() {
+    return &quot;rgb(&quot; + ~~(255 * Math.random()) + &quot;,&quot; + ~~(255 * Math.random()) + &quot;,&quot; + ~~(255 * Math.random()) + &quot;)&quot;
+  }
+  var d = [];
+  e.requestAnimationFrame = function () {
+    return e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+      setTimeout(e, 1e3 / 60)
+    }
+  }(), n()
+}(window, document);
+
+2.在\themes\*\layout\_layout.swig文件末尾&lt;/body&gt;之前添加
+&lt;!-- 页面点击小红心 --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/love.js&quot;&gt;&lt;/script&gt;
+3.我选择的是社会主义核心价值观的特效，因为我们都是社会主义接班人！！
+(function() {
+    
+    var T_color = &quot;&quot;;//字体颜色,你不设置就是随机颜色,
+    
+    var T_size = [10,20];//文字大小区间,不建议太大
+    
+    var T_font_weight = &quot;bold&quot;;//字体粗斜度--&gt;normal,bold,900
+    
+    var AnimationTime = 1500;//文字消失总毫秒
+    
+    var Move_up_Distance = 388;//文字移动距离,正数代表上移，反之下移
+    
+    var a_index = 0;
+    $(&quot;html&quot;).click(function(e){
+        var a = new Array(&quot;富强&quot;, &quot;民主&quot;, &quot;文明&quot;, &quot;和谐&quot;, &quot;自由&quot;, &quot;平等&quot;, &quot;公正&quot; ,&quot;法治&quot;, &quot;爱国&quot;, &quot;敬业&quot;, &quot;诚信&quot;, &quot;友善&quot;);
+        var $i = $(&quot;&lt;span/&gt;&quot;).text(a[a_index]);
+        a_index = (a_index + 1) % a.length;
+        var x = e.pageX,y = e.pageY;
+        var x_color =  &quot;#&quot; + ('00000' + (Math.random() * 0x1000000 &lt;&lt; 0).toString(16)).substr(-6);//--&gt;随机颜色
+        //console.log(x_color);
+        if(T_color.length&gt;=4){
+            x_color = T_color;
+        }
+        
+        var x_size = Math.random()*(T_size[1]-T_size[0]) + T_size[0];
+        x_size +=  &quot;px&quot;;
+        
+        $i.css({
+            &quot;z-index&quot;: 99999,
+            &quot;top&quot;: y - 20,
+            &quot;left&quot;: x,
+            &quot;position&quot;: &quot;absolute&quot;,
+            &quot;font-weight&quot;: &quot;bold&quot;,
+            &quot;font-size&quot;:x_size,
+            &quot;color&quot;: x_color
+        });
+        $(&quot;html&quot;).append($i);
+        $i.animate({&quot;top&quot;: y-Move_up_Distance,&quot;opacity&quot;: 0},AnimationTime,function() {
+            $i.remove();
+        });
+    });
+})();
+</code></pre>
+<blockquote>
+<p>17、修改文章内链接文本样式</p>
+</blockquote>
+<pre><code>1.修改文件 themes\*\source\css\_common\components\post\post.styl，在末尾添加如下css样式，：
+// 文章内链接文本样式
+.post-body p a{
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+  &amp;:hover {
+    color: #fc6423;
+    border-bottom: none;
+    border-bottom: 1px solid #fc6423;
+  }
+}
+</code></pre>
+<blockquote>
+<p>18、在文章末尾添加“本文结束”标记</p>
+</blockquote>
+<pre><code>1.在路径 \themes\*\layout\_macro 中新建 passage-end-tag.swig 文件,并添加以下内容：
+&lt;div&gt;
+    {% if not is_index %}
+        &lt;div style=&quot;text-align:center;color: #ccc;font-size:14px;&quot;&gt;-------------本文结束&lt;i class=&quot;fa fa-paw&quot;&gt;&lt;/i&gt;感谢您的阅读-------------&lt;/div&gt;
+    {% endif %}
+&lt;/div&gt;
+2.打开\themes\*\layout\_macro\post.swig文件，在post-body 之后， post-footer之前添加如下代码（post-footer之前两个DIV）
+&lt;div&gt;
+  {% if not is_index %}
+    {% include 'passage-end-tag.swig' %}
+  {% endif %}
+&lt;/div&gt;
+
+3.打开主题配置文件（_config.yml),在末尾添加：
+# 文章末尾添加“本文结束”标记
+passage_end_tag:
+  enabled: true
+4.完成以上设置之后，在每篇文章之后都会添加如此效果图
+</code></pre>
+<blockquote>
+<p>19、自定义鼠标样式</p>
+</blockquote>
+<pre><code>打开 themes/*/source/css/_custom/custom.styl ,在里面写下如下代码：
+// 鼠标样式
+  * {
+      cursor: url(&quot;http://om8u46rmb.bkt.clouddn.com/sword2.ico&quot;),auto!important
+  }
+  :active {
+      cursor: url(&quot;http://om8u46rmb.bkt.clouddn.com/sword1.ico&quot;),auto!important
+  }
+</code></pre>
+<blockquote>
+<p>20、Canvas背景</p>
+</blockquote>
+<pre><code>在主题配置文件中，找到Canvas配置项，可以应用Next自带的Canvas特效
+更改颜色和数量修改文件：/themes/next/source/lib/canvas-nest/canvas-nest.min.js
+</code></pre>
+<blockquote>
+<p>21、修改内容区域的宽度</p>
+</blockquote>
+<pre><code>编辑主题的 source/css/_variables/custom.styl 文件，新增变量：
+// 修改成你期望的宽度
+$content-desktop = 700px
+// 当视窗超过 1600px 后的宽度
+$content-desktop-large = 900px
+但是此方法不适用于 Pisces Scheme，对于 Pisces Scheme，需要同时修改 header 的宽度、.main-inner 的宽度以及 .content-wrap 的宽度。例如，使用百分比（Pisces 的布局定义在 source/css/_schemes/Picses/_layout.styl 中）
+.header{ width: 60%; }
+.container .main-inner { width: 60%; }
+.content-wrap { width: calc(100% - 260px); }
+超过一定宽度后（一行内文字太多导致换行跨度太大），阅读体验不好，我调整的宽度为60%，各位可以自行测试进行调整
+</code></pre>
+<blockquote>
+<p>22、打赏功能</p>
+</blockquote>
+<pre><code>1.准备支付宝和微信二维码，存放在themes/*/source/images
+2.在主题配置文件（_config.yml）中进行设置
+# Reward
+reward_comment: 谢谢请我吃辣条！
+wechatpay: /images/wechatpay.png
+alipay: /images/alipay.jpg
+3.修复图片闪动bug，修改next/source/css/_common/components/post/post-reward.styl，注释wechat:hover和alipay:hover
+</code></pre>
+<blockquote>
+<p>23、配置Valine评论系统</p>
+</blockquote>
+<pre><code>1.Valine 是一款基于Leancloud的快速、简洁且高效的无后端评论系统；
+2.获取Leancloud的APP ID和 APP KEY, 上面第六步设置中已经介绍了获取方法；
+3.打开主题配置文件: themes/*/_config.yml;
+# Valine.
+# You can get your appid and appkey from https://leancloud.cn
+# more info please open https://valine.js.org
+valine:
+  enable: true
+  appid:  # your leancloud application appid
+  appkey: # your leancloud application appkey
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: false # Verification code
+  placeholder: 在这里说点什么吧... # comment box placeholder
+  avatar: identicon # 评论表头样式  /mm/identicon/monsterid/wavatar/retro/hide
+  guest_info: nick,mail,link # custom comment header
+  pageSize: 10 # pagination size
+4.其他相关配置和邮件提醒方式可查看Valline详细配置官网
+</code></pre>
+<blockquote>
+<p>24、添加搜索功能</p>
+</blockquote>
+<pre><code>1.在根目录下安装hexo-generator-searchdb插件，npm install hexo-generator-searchdb --save;
+2.站点配置文件中添加以下字段
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+3.编辑主题配置文件启用本地搜索
+# Local search
+local_search:
+  enable: true
+</code></pre>
+<blockquote>
+<p>25、不蒜子访问统计</p>
+</blockquote>
+<pre><code>1.编辑 主题配置文件 themes/*/_config.yml中的busuanzi_count的配置项即可;
+busuanzi_count:
+  # count values only if the other configs are false
+  enable: true
+  # custom uv span for the whole site
+  site_uv: true
+  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt;
+  site_uv_footer:
+  # custom pv span for the whole site
+  site_pv: true
+  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;
+  site_pv_footer:
+  # custom pv span for one page only
+  page_pv: true
+  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt;
+  page_pv_footer:
+2.找到主题调用不蒜子的swig文件\themes*\layout_third-party\analytics\busuanzi-counter.swig
+3.更改域名
+把原有的：
+&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+域名改一下即可：
+&lt;script async src=&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>26、添加404公益界面</p>
+</blockquote>
+<pre><code>1.在根目录下输入hexo new page 404;
+2.打开刚新建的页面文件，默认在 Hexo 文件夹根目录下 /source/404/index.md；
+3.将文件名index.md改为404.html;
+4.在文件中写入内容，这里使用的是腾讯公益；
+---
+title: 404 Not Found：该页无法显示
+toc: false
+comments: false
+permalink: /404
+---
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+         &lt;meta charset=&quot;UTF-8&quot; /&gt;
+         &lt;title&gt;404&lt;/title&gt;                                                                                                                                        
+    &lt;/head&gt;
+    &lt;body&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js&quot; homePageName=&quot;返回首页&quot; homePageUrl=&quot;https://sandop.github.io&quot;&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+5.将返回首页的链接更改为自己的链接。
+</code></pre>
+<blockquote>
+<p>27、网页代码压缩</p>
+</blockquote>
+<pre><code>网上有很多相关的博文，常规的做法是使用gulp来进行压缩，但是没有成功，所以更换为hexo-neat压缩插件进行。
+1.站点根目录下安装插件npm install hexo-neat --save；
+2.修改站点配置文件，在末尾添加以下代码；
+# hexo-neat
+# 博文压缩
+neat_enable: true
+# 压缩html
+neat_html:
+  enable: true
+  exclude:
+# 压缩css  
+neat_css:
+  enable: true
+  exclude:
+    - '**/*.min.css'
+# 压缩js
+neat_js:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '**/*.min.js'
+    - '**/jquery.fancybox.pack.js'
+    - '**/index.js'
+3.执行hexo clean &amp;&amp; hexo g &amp;&amp; hexo s查看效果
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://heluchao.github.io//tag/-3Y7AftriK" class="tag">
+                    Hexo
+                  </a>
+                
+                  <a href="https://heluchao.github.io//tag/36bjyvTlgQ" class="tag">
+                    Blog
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://heluchao.github.io//post/NextTheme">
+                  <h3 class="post-title">
+                    使用Hexo搭建博客之Next主题配置（一）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'cd0fb4c7d85811f8fac4',
+        clientSecret: 'aa3ef375b1836a38370167949faf3f76ca50381f',
+        repo: 'HeLuChao.github.io',
+        owner: 'HeLuChao',
+        admin: ['HeLuChao'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

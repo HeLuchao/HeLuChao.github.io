@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Blog | 个人博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://heluchao.github.io//favicon.ico?v=1564283240584">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://heluchao.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://heluchao.github.io/">
+        <img src="https://heluchao.github.io//images/avatar.png?v=1564283240584" class="site-logo">
+        <h1 class="site-title">个人博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://heluchao.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <h2 class="current-tag">标签: Blog</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://heluchao.github.io//post/NextThemeTwo">
+                  <h2 class="post-title">使用Hexo搭建博客之Next主题配置（二）</h2>
+                </a>
+                <div class="post-date">
+                  2019-07-19
+                </div>
+                <div class="post-abstract">
+                  <p>有关于使用Hexo构建博客时使用Next主题的童鞋可以参考下面的一些配置：</p>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://heluchao.github.io//post/NextThemeTwo">
+                  <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/lm/wallhaven-lm2rzq.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://heluchao.github.io//post/NextTheme">
+                  <h2 class="post-title">使用Hexo搭建博客之Next主题配置（一）</h2>
+                </a>
+                <div class="post-date">
+                  2019-07-19
+                </div>
+                <div class="post-abstract">
+                  <p>有关于使用Hexo构建博客时使用Next主题的童鞋可以参考下面的一些配置：</p>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://heluchao.github.io//post/NextTheme">
+                  <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/j5/wallhaven-j5vr3m.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://heluchao.github.io//post/HexoBlogMultiDeviceManage">
+                  <h2 class="post-title">Hexo博客多设备管理方案</h2>
+                </a>
+                <div class="post-date">
+                  2019-07-18
+                </div>
+                <div class="post-abstract">
+                  <p>正常情况下, 我们博客的相关配置信息都是在本地的, 并未上传服务器, 这样当我们想在其他设备, 比如公司的电脑或者家里面个人电脑上面管理,操作步骤如下：</p>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://heluchao.github.io//post/HexoBlogMultiDeviceManage">
+                  <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/83/wallhaven-83rww1.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://heluchao.github.io//post/vuePressBlog">
+                  <h2 class="post-title">基于VuePress以及GitHubPages构建技术博客</h2>
+                </a>
+                <div class="post-date">
+                  2019-07-16
+                </div>
+                <div class="post-abstract">
+                  <p>如何基于VuePress以及GitHubPages构建技术博客<br>
+<a href="https://vuepress.vuejs.org/zh/">VuePress</a></p>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://heluchao.github.io//post/vuePressBlog">
+                  <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/p8/wallhaven-p8yppm.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://heluchao.github.io//post/GithubHexoBlog">
+                  <h2 class="post-title">使用Github以及Hexo快速搭建个人博客</h2>
+                </a>
+                <div class="post-date">
+                  2019-07-15
+                </div>
+                <div class="post-abstract">
+                  <p>使用Github+Hexo快速搭建个人博客需要经过一下几个步骤：<br>
+<a href="https://hexo.io/zh-cn/docs/#%E4%BB%80%E4%B9%88%E6%98%AF-Hexo%EF%BC%9F">Hexo</a></p>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://heluchao.github.io//post/GithubHexoBlog">
+                  <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/5w/wallhaven-5wrq87.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
