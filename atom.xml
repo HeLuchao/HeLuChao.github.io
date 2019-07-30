@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://heluchao.github.io/</id>
     <title>个人博客</title>
-    <updated>2019-07-28T03:53:32.836Z</updated>
+    <updated>2019-07-30T14:27:12.772Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://heluchao.github.io/"/>
     <link rel="self" href="https://heluchao.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://heluchao.github.io//images/avatar.png</logo>
     <icon>https://heluchao.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[使用uni-app框架开发H5以及移动端APP]]></title>
+        <id>https://heluchao.github.io//post/uni-app</id>
+        <link href="https://heluchao.github.io//post/uni-app">
+        </link>
+        <updated>2019-07-30T14:17:28.000Z</updated>
+        <summary type="html"><![CDATA[<p>在多端横行的今天，一款横跨多端的框架可以使开发者游刃有余。今天来给大家安利一款好用的多端开发框架uni-app。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在多端横行的今天，一款横跨多端的框架可以使开发者游刃有余。今天来给大家安利一款好用的多端开发框架uni-app。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vuejs双向绑定功能简单实现]]></title>
         <id>https://heluchao.github.io//post/VuejsBind</id>
@@ -109,17 +120,6 @@
         <summary type="html"><![CDATA[<p>有关于使用Hexo构建博客时使用Next主题的童鞋可以参考下面的一些配置：</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>有关于使用Hexo构建博客时使用Next主题的童鞋可以参考下面的一些配置：</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[前端开发规范]]></title>
-        <id>https://heluchao.github.io//post/frontEndRules</id>
-        <link href="https://heluchao.github.io//post/frontEndRules">
-        </link>
-        <updated>2019-07-19T09:20:53.000Z</updated>
-        <summary type="html"><![CDATA[<p>前端开发规范</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>前端开发规范</p>
 ]]></content>
     </entry>
 </feed>
