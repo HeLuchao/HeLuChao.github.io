@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Vuejs | 个人博客</title>
+<title>JavaScript中实现继承的几种常用方法总结 | 个人博客</title>
 <meta name="description" content="心有猛虎，细嗅蔷薇～">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://heluchao.github.io//styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -120,34 +126,100 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: Vuejs</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://heluchao.github.io//post/VuejsBind">
-                  <h2 class="post-title">Vuejs双向绑定功能简单实现</h2>
-                </a>
-                <div class="post-date">
-                  2019-07-27
-                </div>
-                <div class="post-abstract">
-                  <p>大家在使用Vuejs的时候，一定都使用过双向绑定的功能，今天就来简单实现下Vuejs的双向绑定功能。</p>
-
-                </div>
+          <div class="post-detail">
+            <h2 class="post-title">JavaScript中实现继承的几种常用方法总结</h2>
+            <div class="post-date">2019-07-31</div>
+            
+              <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/96/wallhaven-96rq88.jpg')">
               </div>
-              
-                <a class="right" href="https://heluchao.github.io//post/VuejsBind">
-                  <div class="feature-container" style="background-image: url('https://w.wallhaven.cc/full/6k/wallhaven-6k5z5q.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
+            
+            <div class="post-content">
+              <p>在JavaScript中继承是我们经常使用到的面向对象的三大特性之一，今天就来总结下实现继承的几种常用方法</p>
+<!-- more -->
+<h1 id="ecmascript5">ECMAScript5</h1>
+<blockquote>
+<p>1.构造函数绑定：使用 call 或 apply 方法，将父对象的构造函数绑定在子对象上</p>
+</blockquote>
+<pre><code>function Cat(name,color){
+ 　Animal.apply(this, arguments);
+ 　this.name = name;
+ 　this.color = color;
+}
+</code></pre>
+<blockquote>
+<p>2.实例继承：将子对象的 prototype 指向父对象的一个实例</p>
+</blockquote>
+<pre><code>Cat.prototype = new Animal();
+Cat.prototype.constructor = Cat;
+</code></pre>
+<blockquote>
+<p>3.拷贝继承：如果把父对象的所有属性和方法，拷贝进子对象</p>
+</blockquote>
+<pre><code>    function extend(Child, Parent) {
+  　　　var p = Parent.prototype;
+  　　　var c = Child.prototype;
+  　　　for (var i in p) {
+  　　　   c[i] = p[i];
+  　　　}
+  　　　c.uber = p;
+  　 }
+</code></pre>
+<blockquote>
+<p>4.原型继承：将子对象的 prototype 指向父对象的 prototype</p>
+</blockquote>
+<pre><code>    function extend(Child, Parent) {
+        var F = function(){};
+      　F.prototype = Parent.prototype;
+      　Child.prototype = new F();
+      　Child.prototype.constructor = Child;
+      　Child.uber = Parent.prototype;
+    }
+</code></pre>
+<h1 id="ecmascript6">EcmaScript6</h1>
+<blockquote>
+<p>ES6 语法糖 extends：class ColorPoint extends Point {}</p>
+</blockquote>
+<pre><code>    class ColorPoint extends Point {
+       constructor(x, y, color) {
+          super(x, y); // 调用父类的constructor(x, y)
+          this.color = color;
+       }
+       toString() {
+          return this.color + ' ' + super.toString(); // 调用父类的toString()
+       }
+    }
+</code></pre>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://heluchao.github.io//tag/tGLKzES_u" class="tag">
+                    JavaScript
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://heluchao.github.io//post/uni-app">
+                  <h3 class="post-title">
+                    使用uni-app框架开发H5以及移动端APP
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
 
         </div>
       </div>
@@ -169,6 +241,29 @@ var app = new Vue({
 })
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'cd0fb4c7d85811f8fac4',
+        clientSecret: 'aa3ef375b1836a38370167949faf3f76ca50381f',
+        repo: 'HeLuChao.github.io',
+        owner: 'HeLuChao',
+        admin: ['HeLuChao'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
